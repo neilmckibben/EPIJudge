@@ -2,7 +2,16 @@ from test_framework import generic_test
 
 
 def is_palindrome(s):
-    # TODO - you fill in here.
+    length = len(s)
+    unchecked = True
+    while(unchecked)
+        front = i
+        back = length - 1 - i
+        frontChar = s[front]
+        backChar = s[back]
+        if s[front] is not s[back]:
+            return False
+
     return True
 
 

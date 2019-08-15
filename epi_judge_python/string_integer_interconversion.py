@@ -3,8 +3,18 @@ from test_framework.test_failure import TestFailure
 
 
 def int_to_string(x):
-    # TODO - you fill in here.
-    return ''
+    val = ""
+    if x is 0:
+        return "0"
+
+    while x is not 0:
+        digit = x % 10
+        val += digit
+    return val.reverse()
+
+
+
+    return
 
 
 def string_to_int(s):
