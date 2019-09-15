@@ -2,8 +2,19 @@ from test_framework import generic_test
 
 
 def convert_base(num_as_string, b1, b2):
-    # TODO - you fill in here.
-    return ''
+    # wanna convert it to base 10 then back????
+    return_value = str()
+    digit_power = 0
+    #convert to base 10
+    while num_as_string:
+        digit = int((num_as_string[-1]))
+        raw_digit = digit (b1)
+        new_digit = raw_digit * (b2 ** digit_power)
+        return_value += str(new_digit)
+        num_as_string = num_as_string[:-1]
+        digit_power += 1
+
+    return return_value[::-1]
 
 
 if __name__ == '__main__':

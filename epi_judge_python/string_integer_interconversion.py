@@ -8,18 +8,28 @@ def int_to_string(x):
         return "0"
 
     while x is not 0:
-        digit = x % 10
+        digit = chr(x % 10)
         val += digit
+        x = x/10
     return val.reverse()
 
 
-
-    return
-
-
 def string_to_int(s):
-    # TODO - you fill in here.
-    return 0
+    intVal = 0
+    digitCount = 0
+    negative = False
+    if s[0] is "-":
+        negative = True
+        s = s[1:]
+    if s is "0":
+        return 0
+    while not s:
+        digit = int(s[-1]) #get back digit
+        digit = (10**digitCount) + digit #raise it to a power
+        s = s[:-1] #remove the last
+        intVal += digit
+        digitCount += 1 #higher power
+    return intVal
 
 
 def wrapper(x, s):

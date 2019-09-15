@@ -1,13 +1,28 @@
 import functools
 
+from list_node import ListNode
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
 from test_framework.test_utils import enable_executor_hook
 
 
 def list_pivoting(l, x):
-    # TODO - you fill in here.
-    return None
+    greater_than = l
+    less_than = ListNode()
+    while greater_than is not None and greater_than.data <= x:
+        greater_than = greater_than.next
+    current = l
+    while current is not None:
+        if current.data < x:
+            less_than.next = current
+            less_than = less_than.next
+
+        else:
+            #Do something else
+
+        current = current.next
+
+    return l
 
 
 def linked_to_list(l):

@@ -2,8 +2,20 @@ from test_framework import generic_test
 
 
 def remove_duplicates(L):
-    # TODO - you fill in here.
-    return None
+    head = L
+    current = L
+    check = -1
+    prev = current
+    while current is not None:
+        current_val = current.data
+        if current_val == check:
+            prev.next = current.next
+        else:
+            prev = current
+        check = current_val
+
+        current = current.next
+    return head
 
 
 if __name__ == '__main__':
