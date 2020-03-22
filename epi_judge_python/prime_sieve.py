@@ -3,47 +3,21 @@ from test_framework import generic_test
 
 # Given n, return all primes up to and including n.
 def generate_primes(n):
-    primes = list()
-    if n < 2:
+    if n is 0 or n is 1:
         return []
-    elif n == 2:
+    if n is 2:
         return [2]
-    valid = list()
-    count = 0
-    while count < n:
-        valid.append(True)
-        count += 1
-
-    valid[0] = False
-    valid[1] = False
-
-    for i in valid:
-        if valid:
-            range(valid, i)
-
-    for i in range(0, len(valid)):
-        if valid:
-            primes.add(i)
-
-
-    return
-'''
-    valid[0] = False
-
-    for v in range(3, len(valid)):
-        if valid[2] is True:
-            primes.append()
+    primes = list(range(2, n + 1))
+    for i in range(2, len(primes)):
+        if primes[i-2]:
+            j = 2
+            val = i * j
+            while val <= n:
+                primes[val-2] = 0
+                j += 1
+                val = i * j
         i += 1
-'''
-
-
-def range(valid, factor):
-    multiplier = 2
-    while (factor * multiplier) < valid[-1]:
-        valid[factor * multiplier] = False
-        multiplier = multiplier + 1
-
-
+    return [x for x in primes if x is not 0]
 if __name__ == '__main__':
     exit(
         generic_test.generic_test_main("prime_sieve.py", "prime_sieve.tsv",

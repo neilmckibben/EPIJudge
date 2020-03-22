@@ -3,17 +3,15 @@ from test_framework import generic_test
 
 def buy_and_sell_stock_once(prices):
     # TODO - you fill in here.
-    counter = 0
-    maxProfit = 0.0
-    min = float('inf')
+    # 2 pointer solution
+    max_profit = 0
+    minimum = float('inf')
+    maximum = float('-inf')
     for price in prices:
-        if price < min:
-            min = price
-
-        if((price - min) > maxProfit):
-            maxProfit = price - min
-    return maxProfit
-
+        if price < minimum:
+            minimum = price
+        max_profit = max(price - minimum, max_profit)
+    return max_profit
 
 if __name__ == '__main__':
     exit(
