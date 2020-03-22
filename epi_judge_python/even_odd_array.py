@@ -7,8 +7,27 @@ from test_framework.test_utils import enable_executor_hook
 
 
 def even_odd(A):
-    # TODO - you fill in here.
-    return
+    print(A)
+    print(len(A))
+    front = 0
+    back = len(A) - 1
+    for i in range(0, len(A)):
+        temp = A[i]
+        if temp is 158:
+            a = 1
+            print(a)
+        if A[i] % 2 == 0:
+            A[i] = A[front]
+            A[front] = temp
+            front += 1
+        else:
+            A[i] = A[back]
+            A[back] = temp
+            back -= 1
+    # for number in A:
+    #     print((str(number% 2 == 0)))
+    print(A)
+    return A
 
 
 @enable_executor_hook

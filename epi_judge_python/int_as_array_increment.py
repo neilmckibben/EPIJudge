@@ -2,29 +2,20 @@ from test_framework import generic_test
 
 
 def plus_one(A):
-    if len(A) == 0:
-        return A
-    i = len(A)-1
-    carry = 0
-    remainder = True
-    while(remainder and i >= 0):
-        back = A[i]
-        if(back < 9):
-            if(carry):
-                back += carry
-                carry = 0
+    if A[-1] + 1 > 9:
+        A[-1] = 0
+        remainder = True
+        for i in range(1, len(A)):
+            if A[len(A) - 1 - i] + 1 > 9:
+                A[len(A) - 1 - i] = 0
             else:
-                back += 1
-            A[i] = back
-            remainder = False
-        else:
-            A[i] = 0
-            carry = 1
-        i = i-1
-
-    if remainder:
-        A.insert(0, 1)
-
+                A[len(A) - 1 - i] += 1
+                remainder = False
+                break
+        if remainder:
+            A.insert(0, 1)
+    else:
+        A[-1] += 1
     return A
 
 
