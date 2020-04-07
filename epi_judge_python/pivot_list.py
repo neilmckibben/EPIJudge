@@ -7,22 +7,24 @@ from test_framework.test_utils import enable_executor_hook
 
 
 def list_pivoting(l, x):
-    greater_than = l
-    less_than = ListNode()
-    while greater_than is not None and greater_than.data <= x:
-        greater_than = greater_than.next
-    current = l
-    while current is not None:
-        if current.data < x:
-            less_than.next = current
+    less_than, equal_to, greater_than = ListNode(0), ListNode(0), ListNode(0)
+    dummy_less, dummy_equal, dummy_greater = less_than, equal_to, greater_than
+
+    while l:
+        if l.data < x:
+            less_than.next = l
             less_than = less_than.next
-
+        elif l.data == x:
+            equal_to.next = l
+            equal_to = equal_to.next
         else:
-            #Do something else
-
-        current = current.next
-
-    return l
+            greater_than.next = l
+            greater_than = greater_than.next
+        l = l.next
+    greater_than.next = None
+    equal_to.next = dummy_greater.next
+    less_than.next = dummy_equal.next
+    return dummy_less.next
 
 
 def linked_to_list(l):
