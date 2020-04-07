@@ -3,28 +3,24 @@ from test_framework import generic_test
 
 
 def even_odd_merge(L):
-    print(L)
-    if L is not None:
-        current = L
-        even = ListNode()
-        evenHead = even
-        odd = ListNode()
-        oddHead = odd
-        counter = 0
-        while current is not None:
-            if counter % 2 == 0:
-                even.next = current
-                even = even.next
-            else:
-                odd.next = current
-                odd = odd.next
-            current = current.next
-            counter += 1
+    if L is None:
+        return None
+    odd, even = ListNode(0), ListNode(0)
+    head_even, head_odd = even, odd
+    index = 0
+    while L:
+        if index % 2 == 0:
+            even.next = L
+            even = even.next
+        else:
+            odd.next = L
+            odd = odd.next
+        L = L.next
+        index += 1
+    odd.next = None
+    even.next = head_odd.next
+    return head_even.next
 
-        even.next = oddHead.next
-        odd.next = None
-        return evenHead.next
-    return None
 
 if __name__ == '__main__':
     exit(
