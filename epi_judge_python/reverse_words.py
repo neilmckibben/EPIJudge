@@ -6,8 +6,19 @@ from test_framework.test_utils import enable_executor_hook
 
 # Assume s is a string encoded as bytearray.
 def reverse_words(s):
-    # TODO - you fill in here.
-    return
+    words = []
+    i = 0
+    while i < len(s):
+        word = []
+        print(s[i])
+        while chr(s[i]).isalpha() and i < len(s):
+            word.append(i)
+            i += 1
+        words.append(word)
+        i += 1
+    print(words)
+
+    return []
 
 
 @enable_executor_hook

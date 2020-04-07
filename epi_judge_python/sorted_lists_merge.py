@@ -3,27 +3,26 @@ from test_framework import generic_test
 
 
 def merge_two_sorted_lists(L1, L2):
-    dummy = ListNode()
-    head = dummy
-    while L1 is not None and L2 is not None:
-        l1_val = L1.data
-        l2_val = L2.data
-        min = None
-        if l1_val < l2_val:
-            min = L1
-            L1 = L1.next
+    dummy = ListNode(0)
+    dummyHead  = dummy
+    L1Dummy = L1
+    L2Dummy = L2
+    while L1Dummy is not None or L2Dummy is not None:
+        if L1Dummy is None:
+            dummy.next = L2Dummy
+            L2Dummy = L2Dummy.next
+        elif L2Dummy is None:
+            dummy.next = L1Dummy
+            L1Dummy = L1Dummy.next
         else:
-            min = L2
-            L2 = L2.next
-        dummy.next = min
+            if L1Dummy.data < L2Dummy.data:
+                dummy.next = L1Dummy
+                L1Dummy = L1Dummy.next
+            else:
+                dummy.next = L2Dummy
+                L2Dummy = L2Dummy.next
         dummy = dummy.next
-
-    if L1 is None:
-        dummy.next = L2
-    else:
-        dummy.next = L1
-
-    return head.next
+    return dummyHead.next
 
 
 if __name__ == '__main__':

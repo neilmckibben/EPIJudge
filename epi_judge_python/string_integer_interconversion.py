@@ -1,35 +1,38 @@
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
 
+mapping_string = {1: "1", 0: "0", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9"}
+mapping_int = {"0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9}
+
 
 def int_to_string(x):
     val = ""
+    negative = ""
     if x is 0:
         return "0"
-
-    while x is not 0:
-        digit = chr(x % 10)
-        val += digit
-        x = x/10
-    return val.reverse()
+    if x < 0:
+        negative = "-"
+        x = x * -1
+    while x:
+        digit = x % 10
+        val += mapping_string[digit]
+        x = x // 10
+    return negative + val[::-1]
 
 
 def string_to_int(s):
     intVal = 0
-    digitCount = 0
-    negative = False
-    if s[0] is "-":
-        negative = True
-        s = s[1:]
-    if s is "0":
-        return 0
-    while not s:
-        digit = int(s[-1]) #get back digit
-        digit = (10**digitCount) + digit #raise it to a power
-        s = s[:-1] #remove the last
-        intVal += digit
-        digitCount += 1 #higher power
-    return intVal
+    power = 0
+    negative = 1
+    while s:
+        digit = s[-1]
+        if digit != "-":
+            intVal += mapping_int[digit] * (10 ** power)
+            power += 1
+        else:
+            negative = -1
+        s = s[:-1]
+    return intVal * negative
 
 
 def wrapper(x, s):

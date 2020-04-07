@@ -2,7 +2,13 @@ from test_framework import generic_test
 
 
 def apply_permutation(perm, A):
-    # TODO - you fill in here.
+    answer = list()
+    for i in range(0, len(perm)):
+        perm[i] = A[perm[i]]
+    # print(perm)
+    # print(A)
+    # print(len(perm), len(A))
+
     return
 
 

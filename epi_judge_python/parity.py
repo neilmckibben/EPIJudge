@@ -2,16 +2,16 @@ from test_framework import generic_test
 
 
 def parity(x):
-    # count = 0
-    # while x:
-    #     count ^= 1
-    #     x &= (x - 1)
-    # return count
-
+    count = 0
     while x:
-        print(x >> 2)
-        x = x >> 2
-    return -1
+        count ^= 1
+        x &= (x - 1)
+    return count
+
+    # while x:
+    #     print(x >> 2)
+    #     x = x >> 2
+    # return -1
 
 
 

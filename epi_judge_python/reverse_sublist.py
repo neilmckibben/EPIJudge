@@ -2,8 +2,37 @@ from test_framework import generic_test
 
 
 def reverse_sublist(L, start, finish):
-    # TODO - you fill in here.
-    return None
+    head, i, before_reverse = L, 1, None
+
+    while i < start:
+        before_reverse = L
+        L = L.next
+        i += 1
+
+    node = reverse(L, start, finish)
+
+    if before_reverse:
+        before_reverse.next = node
+    else:
+        head = node
+
+    return head
+
+
+def reverse(head, start, finish):
+    prev, temp = None, None
+    copy = head
+
+    while head is not None and start < finish + 1:
+        temp = head.next
+        head.next = prev
+        prev = head
+        head = temp
+        start += 1
+    if copy:
+        copy.next = temp
+
+    return prev
 
 
 if __name__ == '__main__':

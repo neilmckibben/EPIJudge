@@ -2,16 +2,13 @@ from test_framework import generic_test
 
 
 def is_palindrome(s):
-    length = len(s)
-    unchecked = True
-    while(unchecked)
-        front = i
-        back = length - 1 - i
-        frontChar = s[front]
-        backChar = s[back]
-        if s[front] is not s[back]:
+    invalid = {" ", ",", ".", "!", "%", "^", "?", "[", "]", "(", ")", "+", "&", "%", "$", "#", ":", ";", "%", "_", "-",
+               "{", "}", "\\", "/", "'", ">", "<", "\"", "="}
+    s = [i for i in s if i not in invalid]
+    i = 0
+    for i in range(0, len(s)//2):
+        if s[i].lower() != s[-1 - i].lower():
             return False
-
     return True
 
 

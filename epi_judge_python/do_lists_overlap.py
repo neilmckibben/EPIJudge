@@ -4,10 +4,35 @@ from test_framework import generic_test
 from test_framework.test_failure import TestFailure
 from test_framework.test_utils import enable_executor_hook
 
+def length(head):
+    start = head
+    length = 0
+    while head and start is not head:
+        head = head.next
+        length += 1
+    return length
+
+
 
 def overlapping_lists(l0, l1):
-    # TODO - you fill in here.
+    return answer(l0, l1)
+    # l0_length = length(l0)
+    # l1_length = length(l1)
+    # slow, fast = l0, l1
+    # if l1_length < l0_length:
+    #     slow, fast = l1, l0
+    # while slow is not None and fast is not None and fast.next is not None and fast.next.next is not None:
+    #     fast = fast.next
+    #     fast = fast.next
+    #     slow = slow.next
+    #     if fast is slow:
+    #         return fast
     return None
+
+
+def answer(l0, l1):
+    root0, root1 = has_
+
 
 
 @enable_executor_hook

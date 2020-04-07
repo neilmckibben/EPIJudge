@@ -2,10 +2,12 @@ from test_framework import generic_test
 
 
 def search_list(L, key):
-    temp = L
-    while L and L.data != key:
-     L = L.next
-    return L
+    while L:
+        if L.data == key:
+            return L
+        L = L.next
+    return None
+
 
 
 def search_list_wrapper(L, key):
