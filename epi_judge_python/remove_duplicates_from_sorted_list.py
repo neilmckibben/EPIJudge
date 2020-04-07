@@ -1,21 +1,19 @@
 from test_framework import generic_test
 
-
 def remove_duplicates(L):
     head = L
-    current = L
-    check = -1
-    prev = current
-    while current is not None:
-        current_val = current.data
-        if current_val == check:
-            prev.next = current.next
+    current_node = None
+    current_value = None
+    while head:
+        if head.data != current_value:
+            current_node, current_value = head, head.data
         else:
-            prev = current
-        check = current_val
-
-        current = current.next
-    return head
+            forward = head
+            while forward and forward.data == head.data:
+                forward = forward.next
+            current_node.next = forward
+        head = current_node.next
+    return L
 
 
 if __name__ == '__main__':
