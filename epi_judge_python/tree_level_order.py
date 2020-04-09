@@ -1,9 +1,27 @@
 from test_framework import generic_test
+from collections import deque
 
 
 def binary_tree_depth_order(tree):
-    # TODO - you fill in here.
-    return []
+    if tree is None:
+        return []
+    order = list()
+    level = deque()
+    level.append([tree])
+    while len(level) != 0:
+        sub_level = level.popleft()
+        next_sub_level = deque()
+        values = []
+        for node in sub_level:
+            values.append(node.data)
+            if node.left is not None:
+                next_sub_level.append(node.left)
+            if node.right is not None:
+                next_sub_level.append(node.right)
+        if len(sub_level) != 0:
+            level.append(next_sub_level)
+            order.append(values)
+    return order
 
 
 if __name__ == '__main__':
