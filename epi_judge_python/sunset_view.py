@@ -2,8 +2,16 @@ from test_framework import generic_test
 
 
 def examine_buildings_with_sunset(sequence):
-    # TODO - you fill in here.
-    return []
+    if len(sequence) == 0:
+        return []
+    max_height = sequence[-1]
+    sunset = [len(sequence) - 1]
+    for i in range(1, len(sequence)):
+        building = sequence[~i]
+        if building > max_height:
+            sunset.append(len(sequence) - 1 - i)
+            max_height = building
+    return sunset
 
 
 def examine_buildings_with_sunset_wrapper(sequence):
