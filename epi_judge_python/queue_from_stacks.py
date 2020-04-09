@@ -2,13 +2,19 @@ from test_framework import generic_test
 
 
 class Queue:
+    stack = []
     def enqueue(self, x):
-        # TODO - you fill in here.
+        self.stack.append(x)
         return
 
     def dequeue(self):
-        # TODO - you fill in here.
-        return 0
+        temp = []
+        while len(self.stack) != 1:
+            temp.append(self.stack.pop())
+        val = self.stack.pop()
+        while temp:
+            self.stack.append(temp.pop())
+        return val
 
 
 def queue_tester(ops):
