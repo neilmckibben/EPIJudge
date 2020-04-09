@@ -1,9 +1,18 @@
 from test_framework import generic_test
 
+expected = {")": "(", "]": "[", "}": "{"}
+
 
 def is_well_formed(s):
-    # TODO - you fill in here.
-    return True
+    tokens = list(s)
+    stack = list()
+    for token in tokens:
+        if token in expected:
+            if len(stack) == 0 or stack.pop() != expected[token]:
+                return False
+        else:
+            stack.append(token)
+    return len(stack) == 0
 
 
 if __name__ == '__main__':
