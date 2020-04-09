@@ -1,19 +1,24 @@
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
+from heapq import *
 
 
 class QueueWithMax:
+    max_vals = []
+    values = []
     def enqueue(self, x):
-        # TODO - you fill in here.
+        self.values.append(x)
+        heappush(self.max_vals, ~x)
         return
 
     def dequeue(self):
-        # TODO - you fill in here.
-        return 0
+        val = self.values.pop(0)
+        self.max_vals.remove(~val)
+        heapify(self.max_vals)
+        return val
 
     def max(self):
-        # TODO - you fill in here.
-        return 0
+        return ~self.max_vals[0]
 
 
 def queue_tester(ops):
