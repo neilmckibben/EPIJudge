@@ -1,23 +1,31 @@
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
+from queue import PriorityQueue
 
 
 class Stack:
+    array = []
+    max_arr = []
+
     def empty(self):
-        # TODO - you fill in here.
+        if len(self.array) != 0:
+            return False
         return True
 
     def max(self):
-        # TODO - you fill in here.
+        if len(self.max_arr) != 0:
+            self.max_arr.sort()
+            return self.max_arr[-1]
         return 0
 
     def pop(self):
-        # TODO - you fill in here.
-        return 0
+        value = self.array.pop()
+        self.max_arr.remove(value)
+        return value
 
     def push(self, x):
-        # TODO - you fill in here.
-        return
+        self.array.append(x)
+        self.max_arr.append(x)
 
 
 def stack_tester(ops):
