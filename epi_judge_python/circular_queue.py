@@ -1,23 +1,25 @@
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
+from collections import deque
 
 
 class Queue:
+    # arr = deque()
+    arr = []
     def __init__(self, capacity):
         # TODO - you fill in here.
         return
 
     def enqueue(self, x):
-        # TODO - you fill in here.
+        # self.arr.append(x)
+        self.arr.append(x)
         return
 
     def dequeue(self):
-        # TODO - you fill in here.
-        return 0
+        return self.arr.pop(0)
 
     def size(self):
-        # TODO - you fill in here.
-        return 0
+        return len(self.arr)
 
 
 def queue_tester(ops):
