@@ -7,9 +7,17 @@ from test_framework.test_failure import TestFailure
 from test_framework.test_utils import enable_executor_hook
 
 
+def traverse(node, leaves):
+    if node:
+        traverse(node.left, leaves)
+        traverse(node.right, leaves)
+        if not node.left and not node.right:
+            leaves.append(node)
+
 def create_list_of_leaves(tree: BinaryTreeNode) -> List[BinaryTreeNode]:
-    # TODO - you fill in here.
-    return []
+    leaves = list()
+    traverse(tree, leaves)
+    return leaves
 
 
 @enable_executor_hook
