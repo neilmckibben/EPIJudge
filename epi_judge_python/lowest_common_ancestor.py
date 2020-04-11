@@ -5,10 +5,29 @@ from test_framework.binary_tree_utils import must_find_node, strip_parent_link
 from test_framework.test_failure import TestFailure
 from test_framework.test_utils import enable_executor_hook
 
+def find_node_in_subtree(tree, node):
+    if tree is not None:
+        if tree is node:
+            return True
+        return find_node_in_subtree(tree.left, node) or find_node_in_subtree(tree.right, node)
+    return False
+
+def both_nodes_in_subtree(tree, node0, node1):
+    in_tree = find_node_in_subtree(tree, node0) and find_node_in_subtree(tree, node1)
+    if in_tree:
+        in_left = find_node_in_subtree(tree.left, node0) and find_node_in_subtree(tree.left, node1)
+        in_right = find_node_in_subtree(tree.right, node0) and find_node_in_subtree(tree.right, node1)
+        if in_left:
+            return both_nodes_in_subtree(tree.left, node0, node1)
+        if in_right:
+            return both_nodes_in_subtree(tree.right, node0, node1)
+        return tree
+
+
+
 
 def lca(tree, node0, node1):
-    # TODO - you fill in here.
-    return None
+    return both_nodes_in_subtree(tree, node0, node1)
 
 
 @enable_executor_hook
