@@ -14,10 +14,11 @@ def reverse_sublist(L: ListNode, start: int,
         i += 1
 
     node = reverse(L, start, finish)
-        if before_reverse:
-            before_reverse.next = node
-        else:
-            head = node
+
+    if before_reverse:
+        before_reverse.next = node
+    else:
+        head = node
 
     return head
 

@@ -27,8 +27,9 @@ def string_to_int(s: str) -> int:
     while s:
         digit = s[-1]
         if digit != "-":
-            intVal += mapping_int[digit] * (10 ** power)
-            power += 1
+            if digit != "+":
+                intVal += mapping_int[digit] * (10 ** power)
+                power += 1
         else:
             negative = -1
         s = s[:-1]

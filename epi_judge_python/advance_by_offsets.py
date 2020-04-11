@@ -4,13 +4,14 @@ from test_framework import generic_test
 
 
 def can_reach_end(A: List[int]) -> bool:
-        value = False
-        if (len(A) - 1) == start:
+    start = 0
+    value = False
+    if (len(A) - 1) == start:
+        return True
+    for i in range(start + 1, length + start + 1):
+        if evaluate(A, i, A[i]):
             return True
-        for i in range(start + 1, length + start + 1):
-            if evaluate(A, i, A[i]):
-                return True
-        return value
+    return value
     return True
 
 

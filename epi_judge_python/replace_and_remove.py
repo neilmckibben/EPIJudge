@@ -21,7 +21,8 @@ def replace_and_remove(size: int, s: List[str]) -> int:
 @enable_executor_hook
 def replace_and_remove_wrapper(executor, size, s):
     res_size = executor.run(functools.partial(replace_and_remove, size, s))
-    return s[:res_size]
+    return res_size
+    # return s[:res_size]
 
 
 if __name__ == '__main__':

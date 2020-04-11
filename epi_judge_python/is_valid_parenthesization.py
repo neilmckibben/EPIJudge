@@ -1,5 +1,6 @@
 from test_framework import generic_test
 
+expected = {")": "(", "]": "[", "}": "{"}
 
 def is_well_formed(s: str) -> bool:
     tokens = list(s)
