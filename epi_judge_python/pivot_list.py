@@ -1,4 +1,5 @@
 import functools
+from typing import Optional
 
 from list_node import ListNode
 from test_framework import generic_test
@@ -6,25 +7,9 @@ from test_framework.test_failure import TestFailure
 from test_framework.test_utils import enable_executor_hook
 
 
-def list_pivoting(l, x):
-    less_than, equal_to, greater_than = ListNode(0), ListNode(0), ListNode(0)
-    dummy_less, dummy_equal, dummy_greater = less_than, equal_to, greater_than
-
-    while l:
-        if l.data < x:
-            less_than.next = l
-            less_than = less_than.next
-        elif l.data == x:
-            equal_to.next = l
-            equal_to = equal_to.next
-        else:
-            greater_than.next = l
-            greater_than = greater_than.next
-        l = l.next
-    greater_than.next = None
-    equal_to.next = dummy_greater.next
-    less_than.next = dummy_equal.next
-    return dummy_less.next
+def list_pivoting(l: ListNode, x: int) -> Optional[ListNode]:
+    # TODO - you fill in here.
+    return None
 
 
 def linked_to_list(l):
@@ -64,5 +49,5 @@ def list_pivoting_wrapper(executor, l, x):
 
 if __name__ == '__main__':
     exit(
-        generic_test.generic_test_main("pivot_list.py", 'pivot_list.tsv',
+        generic_test.generic_test_main('pivot_list.py', 'pivot_list.tsv',
                                        list_pivoting_wrapper))

@@ -1,31 +1,23 @@
 from test_framework import generic_test
 from test_framework.test_failure import TestFailure
-from queue import PriorityQueue
 
 
 class Stack:
-    array = []
-    max_arr = []
-
-    def empty(self):
-        if len(self.array) != 0:
-            return False
+    def empty(self) -> bool:
+        # TODO - you fill in here.
         return True
 
-    def max(self):
-        if len(self.max_arr) != 0:
-            self.max_arr.sort()
-            return self.max_arr[-1]
+    def max(self) -> int:
+        # TODO - you fill in here.
         return 0
 
-    def pop(self):
-        value = self.array.pop()
-        self.max_arr.remove(value)
-        return value
+    def pop(self) -> int:
+        # TODO - you fill in here.
+        return 0
 
-    def push(self, x):
-        self.array.append(x)
-        self.max_arr.append(x)
+    def push(self, x: int) -> None:
+        # TODO - you fill in here.
+        return
 
 
 def stack_tester(ops):
@@ -40,25 +32,25 @@ def stack_tester(ops):
             elif op == 'pop':
                 result = s.pop()
                 if result != arg:
-                    raise TestFailure(
-                        "Pop: expected " + str(arg) + ", got " + str(result))
+                    raise TestFailure('Pop: expected ' + str(arg) + ', got ' +
+                                      str(result))
             elif op == 'max':
                 result = s.max()
                 if result != arg:
-                    raise TestFailure(
-                        "Max: expected " + str(arg) + ", got " + str(result))
+                    raise TestFailure('Max: expected ' + str(arg) + ', got ' +
+                                      str(result))
             elif op == 'empty':
                 result = int(s.empty())
                 if result != arg:
-                    raise TestFailure(
-                        "Empty: expected " + str(arg) + ", got " + str(result))
+                    raise TestFailure('Empty: expected ' + str(arg) +
+                                      ', got ' + str(result))
             else:
-                raise RuntimeError("Unsupported stack operation: " + op)
+                raise RuntimeError('Unsupported stack operation: ' + op)
     except IndexError:
         raise TestFailure('Unexpected IndexError exception')
 
 
 if __name__ == '__main__':
     exit(
-        generic_test.generic_test_main("stack_with_max.py",
+        generic_test.generic_test_main('stack_with_max.py',
                                        'stack_with_max.tsv', stack_tester))
