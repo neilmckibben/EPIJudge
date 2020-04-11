@@ -1,9 +1,7 @@
 from test_framework import generic_test
 
-expected = {")": "(", "]": "[", "}": "{"}
 
-
-def is_well_formed(s):
+def is_well_formed(s: str) -> bool:
     tokens = list(s)
     stack = list()
     for token in tokens:
@@ -17,6 +15,6 @@ def is_well_formed(s):
 
 if __name__ == '__main__':
     exit(
-        generic_test.generic_test_main("is_valid_parenthesization.py",
+        generic_test.generic_test_main('is_valid_parenthesization.py',
                                        'is_valid_parenthesization.tsv',
                                        is_well_formed))

@@ -1,14 +1,15 @@
+from typing import List
+
 from test_framework import generic_test
 
 
-def apply_permutation(perm, A):
+def apply_permutation(perm: List[int], A: List[int]) -> None:
     answer = list()
     for i in range(0, len(perm)):
         perm[i] = A[perm[i]]
     # print(perm)
     # print(A)
     # print(len(perm), len(A))
-
     return
 
 
@@ -19,6 +20,6 @@ def apply_permutation_wrapper(perm, A):
 
 if __name__ == '__main__':
     exit(
-        generic_test.generic_test_main("apply_permutation.py",
-                                       "apply_permutation.tsv",
+        generic_test.generic_test_main('apply_permutation.py',
+                                       'apply_permutation.tsv',
                                        apply_permutation_wrapper))

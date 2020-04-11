@@ -1,9 +1,10 @@
 from test_framework import generic_test
 
+
 symbols = ["+", "-", "/", "*"]
 
 
-def evaluate(expression):
+def evaluate(expression: str) -> int:
     arguments = expression.split(",")
     arguments.reverse()
     answer = process(arguments)
@@ -29,8 +30,7 @@ def process(expression):
             values.append(int(argument))
     return values.pop()
 
-
 if __name__ == '__main__':
     exit(
-        generic_test.generic_test_main("evaluate_rpn.py", 'evaluate_rpn.tsv',
+        generic_test.generic_test_main('evaluate_rpn.py', 'evaluate_rpn.tsv',
                                        evaluate))

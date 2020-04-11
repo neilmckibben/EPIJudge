@@ -1,8 +1,10 @@
+from typing import List
+
 from test_framework import generic_test
 
 
 # Given n, return all primes up to and including n.
-def generate_primes(n):
+def generate_primes(n: int) -> List[int]:
     if n is 0 or n is 1:
         return []
     if n is 2:
@@ -18,7 +20,8 @@ def generate_primes(n):
                 val = i * j
         i += 1
     return [x for x in primes if x is not 0]
+
 if __name__ == '__main__':
     exit(
-        generic_test.generic_test_main("prime_sieve.py", "prime_sieve.tsv",
+        generic_test.generic_test_main('prime_sieve.py', 'prime_sieve.tsv',
                                        generate_primes))

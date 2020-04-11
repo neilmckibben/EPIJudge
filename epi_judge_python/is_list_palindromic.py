@@ -1,7 +1,8 @@
+from list_node import ListNode
 from test_framework import generic_test
 
 
-def is_linked_list_a_palindrome(L):
+def is_linked_list_a_palindrome(L: ListNode) -> bool:
     head = L
     length = 0
     while head:
@@ -15,12 +16,10 @@ def is_linked_list_a_palindrome(L):
         if front is not back:
             return False
         front, back = front.next, back.next
-    return True
 
 
 if __name__ == '__main__':
     exit(
-        generic_test.generic_test_main("is_list_palindromic.py",
+        generic_test.generic_test_main('is_list_palindromic.py',
                                        'is_list_palindromic.tsv',
                                        is_linked_list_a_palindrome))
-

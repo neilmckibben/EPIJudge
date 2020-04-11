@@ -1,7 +1,10 @@
+from typing import Optional
+
+from list_node import ListNode
 from test_framework import generic_test
 
 
-def cyclically_right_shift_list(L, k):
+def cyclically_right_shift_list(L: ListNode, k: int) -> Optional[ListNode]:
     front, back, i, new_front, length = L, L, L, None, 0
     while i:
         i = i.next
@@ -23,6 +26,6 @@ def cyclically_right_shift_list(L, k):
 
 if __name__ == '__main__':
     exit(
-        generic_test.generic_test_main("list_cyclic_right_shift.py",
+        generic_test.generic_test_main('list_cyclic_right_shift.py',
                                        'list_cyclic_right_shift.tsv',
                                        cyclically_right_shift_list))
