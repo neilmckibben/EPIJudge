@@ -7,4 +7,4 @@ def gcd(x: int, y: int) -> int:
 
 
 if __name__ == '__main__':
-    exit(generic_test.generic_test_main('gcd.py', 'gcd.tsv', gcd))
+    exit(generic_test.generic_test_main('euclidean_gcd.py', 'gcd.tsv', gcd))
