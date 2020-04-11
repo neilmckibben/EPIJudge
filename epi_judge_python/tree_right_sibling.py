@@ -13,8 +13,24 @@ class BinaryTreeNode:
 
 
 def construct_right_sibling(tree: BinaryTreeNode) -> None:
-    # TODO - you fill in here.
-    return
+    queue = [[tree]]
+    while queue:
+        level = queue.pop(0)
+        prev = None
+        next_level = list()
+        while level:
+            node = level.pop(0)
+            if node:
+                if prev:
+                    node.next = prev
+                prev = node
+                if node.right:
+                    next_level.append(node.right)
+                if node.left:
+                    next_level.append(node.left)
+        if next_level:
+            queue.append(next_level)
+    return None
 
 
 def traverse_next(node):
