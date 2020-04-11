@@ -1,7 +1,7 @@
 from test_framework import generic_test
 
 
-def rabin_karp(t, s):
+def rabin_karp(t: str, s: str) -> int:
     if len(s) is 0:
         return 0
     for i in range(0, len(t)):
@@ -18,5 +18,5 @@ def rabin_karp(t, s):
 
 if __name__ == '__main__':
     exit(
-        generic_test.generic_test_main("substring_match.py",
+        generic_test.generic_test_main('substring_match.py',
                                        'substring_match.tsv', rabin_karp))

@@ -1,11 +1,12 @@
 import functools
+from typing import List
 
 from test_framework import generic_test
 from test_framework.test_utils import enable_executor_hook
 
 
 # Returns the number of valid entries after deletion.
-def delete_duplicates(A):
+def delete_duplicates(A: List[int]) -> int:
     valid_elements = 0
     i = 0
     prev = None
@@ -16,7 +17,6 @@ def delete_duplicates(A):
         prev = A[i]
         i += 1
     return valid_elements
-#breaks @12 for TC 1
 
 @enable_executor_hook
 def delete_duplicates_wrapper(executor, A):
@@ -26,6 +26,6 @@ def delete_duplicates_wrapper(executor, A):
 
 if __name__ == '__main__':
     exit(
-        generic_test.generic_test_main("sorted_array_remove_dups.py",
+        generic_test.generic_test_main('sorted_array_remove_dups.py',
                                        'sorted_array_remove_dups.tsv',
                                        delete_duplicates_wrapper))

@@ -1,8 +1,10 @@
+from typing import List
+
+from binary_tree_node import BinaryTreeNode
 from test_framework import generic_test
-from collections import deque
 
 
-def binary_tree_depth_order(tree):
+def binary_tree_depth_order(tree: BinaryTreeNode) -> List[List[int]]:
     if tree is None:
         return []
     order = list()
@@ -23,9 +25,8 @@ def binary_tree_depth_order(tree):
             order.append(values)
     return order
 
-
 if __name__ == '__main__':
     exit(
-        generic_test.generic_test_main("tree_level_order.py",
-                                       "tree_level_order.tsv",
+        generic_test.generic_test_main('tree_level_order.py',
+                                       'tree_level_order.tsv',
                                        binary_tree_depth_order))
