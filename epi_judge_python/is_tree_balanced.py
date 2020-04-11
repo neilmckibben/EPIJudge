@@ -1,8 +1,17 @@
 from test_framework import generic_test
 
-
 def is_balanced_binary_tree(tree):
-    # TODO - you fill in here.
+    copy = tree
+    max_depth = 0
+    while copy:
+        tree = tree.left
+        max_depth += 1
+    copy = tree
+    right_depth = 0
+    while copy:
+        tree = tree.right
+        right_depth += 1
+
     return True
 
 
