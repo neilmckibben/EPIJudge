@@ -18,7 +18,6 @@ def multiply(num1: List[int], num2: List[int]) -> List[int]:
         else:
             carry = 0
         sum.append(product)
-
     return sum
 
 

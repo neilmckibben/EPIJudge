@@ -2,6 +2,7 @@ from typing import List
 
 from test_framework import generic_test
 
+from test_framework import generic_test
 
 def rotate_matrix(square_matrix: List[List[int]]) -> None:
     rotated = [[] for i in range(0, len(square_matrix))]
@@ -9,7 +10,6 @@ def rotate_matrix(square_matrix: List[List[int]]) -> None:
         return []
     if len(square_matrix) is 1:
         return square_matrix
-
     for i in range(0, len(square_matrix)):
         row = square_matrix[len(square_matrix) - 1 - i] #Grab whole row
         for j in range(0, len(row)):

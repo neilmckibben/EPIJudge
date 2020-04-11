@@ -13,7 +13,7 @@ def node_height(node):
         node = node.parent
         height += 1
     return height
-    
+
 def lca(node0: BinaryTreeNode,
     node_0_height = node_height(node0)
     node_1_height = node_height(node1)

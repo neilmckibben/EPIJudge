@@ -13,7 +13,7 @@ def find_node_in_subtree(tree, node):
             return True
         return find_node_in_subtree(tree.left, node) or find_node_in_subtree(tree.right, node)
     return False
-
+    
 def both_nodes_in_subtree(tree, node0, node1):
     in_tree = find_node_in_subtree(tree, node0) and find_node_in_subtree(tree, node1)
     if in_tree:

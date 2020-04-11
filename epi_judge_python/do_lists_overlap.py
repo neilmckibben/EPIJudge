@@ -14,7 +14,6 @@ def length(head):
         length += 1
     return length
 
-
 def overlapping_lists(l0: ListNode, l1: ListNode) -> Optional[ListNode]:
     l0_length = length(l0)
     l1_length = length(l1)

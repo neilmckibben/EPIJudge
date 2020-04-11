@@ -37,8 +37,6 @@ def reverse(head, start, finish):
 
     return prev
 
-        return head
-
 if __name__ == '__main__':
     exit(
         generic_test.generic_test_main('reverse_sublist.py',

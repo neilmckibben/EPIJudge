@@ -3,6 +3,12 @@ from typing import Optional
 from list_node import ListNode
 from test_framework import generic_test
 
+def length(head):
+    head, size = head, 0
+    while head:
+        size += 1
+        head = head.next
+    return size
 
 def add_two_numbers(L1: ListNode, L2: ListNode) -> Optional[ListNode]:
     l1_size, l2_size, prev, iterator, carry = length(L1), length(L2), None, L1, 0
@@ -32,37 +38,13 @@ def add_two_numbers(L1: ListNode, L2: ListNode) -> Optional[ListNode]:
             iterator = iterator.next
         if not iterator:
             prev.next = ListNode(1)
-
-
-    # while iterator:
-    #     value = (iterator.data + carry)
-    #     if value > 9:
-    #         carry = 1
-    #         value -= 10
-    #     else:
-    #         carry = 0
-    #     sum += (value * (10 ** power))
-    #     power += 1
-    #     iterator = iterator.next
-
     return head
 
-def length(head):
-    head, size = head, 0
-    while head:
-        size += 1
-        head = head.next
-    return size
 
 
-def reverse_list(head):
-    prev = None
-    while head:
-        temp = head.next
-        head.next = prev
-        prev = head
-        head = temp
-    return prev
+
+
+
 
 
 if __name__ == '__main__':
