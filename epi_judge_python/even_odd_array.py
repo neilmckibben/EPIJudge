@@ -8,28 +8,17 @@ from test_framework.test_utils import enable_executor_hook
 
 
 def even_odd(A: List[int]) -> None:
-    print(A)
-    print(len(A))
-    front = 0
-    back = len(A) - 1
-    for i in range(0, len(A)):
-        temp = A[i]
-        if temp is 158:
-            a = 1
-            print(a)
-        if A[i] % 2 == 0:
-            A[i] = A[front]
-            A[front] = temp
+    front, unknown, back = 0, 0, len(A) - 1
+    while front < back:
+        element = A[unknown]
+        if element % 2 == 0:
+            A[front] = element
             front += 1
+            unknown += 1
         else:
-            A[i] = A[back]
-            A[back] = temp
+            A[unknown], A[back] = A[back], element
             back -= 1
-    # for number in A:
-    #     print((str(number% 2 == 0)))
-    print(A)
     return A
-
 
 @enable_executor_hook
 def even_odd_wrapper(executor, A):
