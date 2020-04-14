@@ -3,16 +3,20 @@ from typing import List
 from test_framework import generic_test
 
 
+
 def can_reach_end(A: List[int]) -> bool:
     start = 0
-    value = False
     if (len(A) - 1) == start:
         return True
-    for i in range(start + 1, length + start + 1):
-        if evaluate(A, i, A[i]):
+    j = 0
+    element = 0
+    while j < element + 1:
+        next_val = A[j]
+        element = max(element, j + next_val)
+        if j == len(A) - 1:
             return True
-    return value
-    return True
+        j += 1
+    return False
 
 
 if __name__ == '__main__':
