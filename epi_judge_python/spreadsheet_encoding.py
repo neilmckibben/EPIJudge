@@ -2,8 +2,10 @@ from test_framework import generic_test
 
 
 def ss_decode_col_id(col: str) -> int:
-    # TODO - you fill in here.
-    return 0
+    sum = 0
+    for i in range(0, len(col)):
+        sum += (ord(col[~i]) - 64) * (26 ** i)
+    return sum
 
 
 if __name__ == '__main__':
