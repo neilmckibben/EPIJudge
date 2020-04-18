@@ -8,16 +8,18 @@ def multiply(num1: List[int], num2: List[int]) -> List[int]:
     indexOne = len(num1)-1
     indexTwo = len(num2)-1
     carry = 0
-    overFlow = False
-    while((indexOne >= 0) or (indexTwo >= 0)):
-        backOne = num1[indexOne]
-        backTwo = num2[indexTwo]
-        product = (backOne * backTwo) + carry
-        if(product > 9):
-            carry = product/10
-        else:
-            carry = 0
-        sum.append(product)
+    print(num1, num2)
+    # overFlow = False
+    # while((indexOne >= 0) or (indexTwo >= 0)):
+    #     backOne = num1[indexOne]
+    #     backTwo = num2[indexTwo]
+    #     product = (backOne * backTwo) + carry
+    #     if(product > 9):
+    #         carry = product/10
+    #     else:
+    #         carry = 0
+    #     sum.append(product)
+    #     print(sum)
     return sum
 
 

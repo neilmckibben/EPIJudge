@@ -4,7 +4,8 @@ from test_framework import generic_test
 
 
 def next_permutation(perm: List[int]) -> List[int]:
-    # TODO - you fill in here.
+    perm_sort = sorted(perm)
+
     return []
 
 
