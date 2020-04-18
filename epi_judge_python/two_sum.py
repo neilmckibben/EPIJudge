@@ -4,7 +4,7 @@ from test_framework import generic_test
 
 
 def has_two_sum(A: List[int], t: int) -> bool:
-    # TODO - you fill in here.
+    #ssh test
     return True
 
 
