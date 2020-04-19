@@ -5,6 +5,8 @@ from test_framework import generic_test
 
 
 def inorder_traversal(tree: BinaryTreeNode) -> List[int]:
+    if not tree:
+        return []
     in_order = []
     first = (tree, True)
     if tree and not tree.left:
@@ -13,10 +15,14 @@ def inorder_traversal(tree: BinaryTreeNode) -> List[int]:
     while traversal_stack:
         element = traversal_stack.pop()
         node, has_left = element[0], element[1]
-        print(node.data)
+        data = (node.data)
         if has_left:
-            traversal_stack.append([node.left, node.left is not None])
-
+            traversal_stack.append([node, False])
+            traversal_stack.append([node.left, node.left.left is not None])
+        else:
+            in_order.append(node.data)
+            if node.right:
+                traversal_stack.append([node.right, node.right.left is not None])
 
     return in_order
 
