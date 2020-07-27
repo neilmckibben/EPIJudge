@@ -9,8 +9,23 @@ Item = collections.namedtuple('Item', ('weight', 'value'))
 
 
 def optimum_subject_to_capacity(items: List[Item], capacity: int) -> int:
-    # TODO - you fill in here.
-    return 0
+    matrix = [[-1] * (capacity + 1) for _ in items]
+
+    def calculate(item, capacity):
+        if item < 0:
+            return 0
+        if matrix[item][capacity] == -1:
+            clock = items[item]
+            if clock.weight > capacity:
+                matrix[item][capacity] = 0
+            else:
+                without_clock = calculate(item - 1, capacity - clock.weight)
+                with_clock = clock.value + calculate(item, capacity - clock.weight)
+                matrix[item][capacity] = max(with_clock, without_clock)
+
+        return matrix[item][capacity]
+
+    return calculate(len(items) - 1, capacity)
 
 
 @enable_executor_hook
