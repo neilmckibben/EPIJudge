@@ -10,8 +10,18 @@ Person = collections.namedtuple('Person', ('age', 'name'))
 
 
 def group_by_age(people: List[Person]) -> None:
-    # TODO - you fill in here.
-    return
+    #Obvious way is sorting, but this is more like bucket sort
+    ages = dict()
+    for person in people:
+        age, name = person
+        ages[age] = ages.get(age, []) + [person]
+    reconstructed = []
+    for key in ages.keys():
+        val = ages[key]
+        reconstructed.append(val)
+    # for i in reconstructed:
+    #     print(i.age)
+    return reconstructed
 
 
 @enable_executor_hook

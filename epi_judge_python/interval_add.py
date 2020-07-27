@@ -11,8 +11,31 @@ Interval = collections.namedtuple('Interval', ('left', 'right'))
 
 def add_interval(disjoint_intervals: List[Interval],
                  new_interval: Interval) -> List[Interval]:
-    # TODO - you fill in here.
-    return []
+    if disjoint_intervals:
+        disjoint_intervals.sort()
+        i = 0
+        new_start, new_end = new_interval.left, new_interval.right
+        if new_start < disjoint_intervals[0].right and new_end < disjoint_intervals[0].left: #Should just be appended to the front
+            return [new_interval] + disjoint_intervals
+        while i < len(disjoint_intervals):
+            element = disjoint_intervals[i]
+            start, end = element.left, element.right
+            #Check if its within the interval
+            # if new_start <= start <= new_end or new_start <= end <= new_end or start <= new_end <= end or start <= new_start <= end:
+            if new_start <= end and new_end >= start:
+                start, end = min(new_start, start), max(new_end, end)
+                # print("Hit", start, end)
+                #Merge intervals
+                index_start = i
+                i += 1
+                while i < len(disjoint_intervals) and disjoint_intervals[i].left <= end:
+                    end = max(end, disjoint_intervals[i].right)
+                    i += 1
+                disjoint_intervals[index_start] = Interval(start, end)
+                del disjoint_intervals[index_start + 1 : i]
+                return disjoint_intervals
+            i += 1
+    return sorted(disjoint_intervals + [new_interval])
 
 
 @enable_executor_hook
@@ -39,3 +62,4 @@ if __name__ == '__main__':
                                        'interval_add.tsv',
                                        add_interval_wrapper,
                                        res_printer=res_printer))
+# new_interval: [724, 727]

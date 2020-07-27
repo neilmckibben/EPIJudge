@@ -5,7 +5,13 @@ from test_framework import generic_test
 
 
 def search_bst(tree: BstNode, key: int) -> Optional[BstNode]:
-    # TODO - you fill in here.
+    if tree:
+        if tree.data == key:
+            return tree
+        elif key > tree.data:
+            return search_bst(tree.right, key)
+        else:
+            return search_bst(tree.left, key)
     return None
 
 

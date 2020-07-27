@@ -16,8 +16,15 @@ class Team:
     # Checks if team0 can be placed in front of team1.
     @staticmethod
     def valid_placement_exists(team0: 'Team', team1: 'Team') -> bool:
-        # TODO - you fill in here.
-        return True
+        team0._players.sort(key=lambda x: x.height)
+        team1._players.sort(key=lambda x: x.height)
+        zero_first = True
+        for i in range(0, len(team0._players)):
+            one = team0._players[i]
+            two = team1._players[i]
+            if one.height >= two.height:
+                zero_first = False
+        return zero_first
 
 
 @enable_executor_hook

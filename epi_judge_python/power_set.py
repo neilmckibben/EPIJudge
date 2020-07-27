@@ -4,8 +4,10 @@ from test_framework import generic_test, test_utils
 
 
 def generate_power_set(input_set: List[int]) -> List[List[int]]:
-    # TODO - you fill in here.
-    return []
+    power_set = []
+
+    return power_set
+
 
 
 if __name__ == '__main__':
