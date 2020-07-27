@@ -4,8 +4,10 @@ from test_framework import generic_test
 
 
 def minimum_path_weight(triangle: List[List[int]]) -> int:
-    # TODO - you fill in here.
-    return 0
+    minimum_path = 0
+    for row in triangle:
+        minimum_path += min(row)
+    return minimum_path
 
 
 if __name__ == '__main__':
