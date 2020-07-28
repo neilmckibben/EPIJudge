@@ -4,7 +4,15 @@ from test_framework import generic_test
 
 
 def minimum_messiness(words: List[str], line_length: int) -> int:
-    # TODO - you fill in here.
+    matrix = [[0] * len(words) for _ in words]
+
+    def calculate(word_index):
+        if words and matrix[word_index][word_index] == 0:
+            error =
+        
+        return matrix[word_index][word_index]
+
+    calculate(len(words) - 1)
     return 0
 
 

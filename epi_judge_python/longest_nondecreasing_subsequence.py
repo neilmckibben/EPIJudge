@@ -4,7 +4,10 @@ from test_framework import generic_test
 
 
 def longest_nondecreasing_subsequence_length(A: List[int]) -> int:
-    # TODO - you fill in here.
+    matrix = [0] * len(A)
+    for element, i in enumerate(A):
+        for j in range(0, i):
+
     return 0
 
 
