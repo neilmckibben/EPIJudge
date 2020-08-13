@@ -4,8 +4,20 @@ from test_framework import generic_test
 
 
 def calculate_largest_rectangle(heights: List[int]) -> int:
-    # TODO - you fill in here.
-    return 0
+
+    front, back = 0, len(heights) - 1
+    maxArea = 0
+    while front < back:
+        min_height_in_range = min(heights[front:back + 1])
+        area = min_height_in_range * (back - front + 1)
+        maxArea = max(area, maxArea)
+        if heights[front] <= heights[back]:
+            front += 1
+        else:
+            back -= 1
+
+
+    return maxArea
 
 
 if __name__ == '__main__':

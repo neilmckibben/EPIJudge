@@ -8,7 +8,10 @@ MinMax = collections.namedtuple('MinMax', ('smallest', 'largest'))
 
 
 def find_min_max(A: List[int]) -> MinMax:
-    # TODO - you fill in here.
+    ans = MinMax(float('inf'), float('-inf'))
+    for element in A:
+        #If it's within this range it isnt a canidatez
+        if ans.smallest < element < ans.largest:
     return MinMax(0, 0)
 
 
