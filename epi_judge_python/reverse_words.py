@@ -7,18 +7,21 @@ from test_framework.test_utils import enable_executor_hook
 # Assume s is a list of strings, each of which is of length 1, e.g.,
 # ['r', 'a', 'm', ' ', 'i', 's', ' ', 'c', 'o', 's', 't', 'l', 'y'].
 def reverse_words(s):
-    words = []
+    def reverse(start, end):
+        while start < end:
+            s[start], s[end] = s[end], s[start]
+            start += 1
+            end -= 1
+    #Swap each word
+    reverse(0, len(s) - 1)
     i = 0
     while i < len(s):
-        word = []
-        print(s[i])
-        while chr(s[i]).isalpha() and i < len(s):
-            word.append(i)
+        word_start, word_end = i, i
+        while i < len(s) and s[i] != " ":
+            word_end = i
             i += 1
-        words.append(word)
+        reverse(word_start, word_end)
         i += 1
-    print(words)
-
     return []
 
 
