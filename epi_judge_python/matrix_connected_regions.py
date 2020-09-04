@@ -4,7 +4,18 @@ from test_framework import generic_test
 
 
 def flip_color(x: int, y: int, image: List[List[bool]]) -> None:
-    # TODO - you fill in here.
+    desired_color = not image[x][y]
+    checked_positions = set()
+    def fill(a, b):
+        if 0 <= a < len(image) and 0 <= b < len(image[0]) and image[a][b] != desired_color and (
+                a, b) not in checked_positions:
+            image[a][b] = desired_color
+            fill(a - 1, b)
+            fill(a + 1, b)
+            fill(a, b - 1)
+            fill(a, b + 1)
+            checked_positions.add((a, b))
+    fill(x, y)
     return
 
 
